@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SparkFund - Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../css/login.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">
+        <img src="../images/SparkFund Logo Design.png" alt="SparkFund Logo" />
+      </div>
+      <i class="fas fa-bars hamburger" onclick="toggleNav()"></i>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="campaign.html">Browse Campaigns</a>
+      </nav>
+      <div class="auth-buttons">
+        <a href="login.html" class="btn login">Login</a>
+        <a href="register.html" class="btn register">Register</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="login-container">
+        <form id="loginForm" class="login-form">
+          <h2>Login to SparkFund</h2>
+
+          <input type="email" id="loginEmail" placeholder="Email" required />
+          <input
+            type="password"
+            id="loginPassword"
+            placeholder="Password"
+            required
+          />
+
+          <button type="submit">Login</button>
+          <p>
+            Don't have an account? <a href="register.html">Register here</a>
+          </p>
+        </form>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-logo">
+        <img src="../images/SparkFund Logo Design.png" alt="SparkFund Logo" />
+      </div>
+
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Campaigns</a>
+        <a href="#">Contact</a>
+        <a href="#">FAQ</a>
+      </div>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+
+      <p>© 2025 SparkFund. All rights reserved.</p>
+    </footer>
+    <script src="../js/login.js"></script>
+    <script>
+      function toggleNav() {
+        const navLinks = document.querySelector(".nav-links");
+        const authButtons = document.querySelector(".auth-buttons");
+        navLinks.classList.toggle("active");
+        authButtons.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

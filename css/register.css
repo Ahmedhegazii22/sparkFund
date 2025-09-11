@@ -1,0 +1,280 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f9fafb;
+  color: #333;
+  font-size: 16px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #edededa7;
+  padding: 12px 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  flex-wrap: wrap;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: 0.3s;
+}
+.nav-links a:hover {
+  color: #ffb703;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+  margin-left: 10px;
+}
+.btn.login {
+  border: 1px solid #ffb703;
+  color: #ffb703;
+  background: transparent;
+}
+.btn.login:hover {
+  background: #ffb703;
+  color: #0a2a43;
+}
+.btn.register {
+  background: #ffb703;
+  color: #0a2a43;
+  font-weight: bold;
+}
+.btn.register:hover {
+  background: #ffa500;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Register Form */
+.error-message {
+  color: red;
+  font-size: 14px;
+  display: none; /* مخفي في البداية */
+  margin-top: 5px;
+}
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 200px);
+  padding: 20px;
+}
+
+.register-form {
+  background: white;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.register-form h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #0a2a43;
+}
+
+.register-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.register-form input:focus {
+  border-color: #ffb703;
+}
+
+.register-form button {
+  width: 100%;
+  padding: 10px;
+  background: #ffb703;
+  color: #0a2a43;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.register-form button:hover {
+  background: #ffa500;
+}
+
+.register-form p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.register-form p a {
+  color: #ffb703;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.register-form p a:hover {
+  color: #0a2a43;
+}
+
+/* Footer */
+.footer {
+  background: #edededa7;
+  color: #0a2a43;
+  padding: 40px 20px;
+  text-align: center;
+  margin-top: 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+}
+
+.footer .footer-logo img {
+  width: 120px;
+}
+
+.footer .footer-links {
+  margin: 15px 0;
+}
+.footer .footer-links a {
+  color: #0a2a43;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 14px;
+  transition: 0.3s;
+}
+.footer .footer-links a:hover {
+  color: #ffb703;
+}
+
+.footer .social-icons {
+  margin: 15px 0;
+}
+.footer .social-icons a {
+  margin: 0 8px;
+  font-size: 18px;
+  color: #ffb703;
+  transition: 0.3s;
+}
+.footer .social-icons a:hover {
+  color: #0a2a43;
+}
+
+.footer p {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #0a2a43;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  .navbar {
+    flex-direction: row;
+    padding: 15px 20px;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .auth-buttons {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .nav-links.active,
+  .auth-buttons.active {
+    display: flex;
+  }
+
+  .btn {
+    margin: 8px 0;
+    padding: 8px 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  .register-form {
+    padding: 20px;
+  }
+
+  .register-form h2 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    height: 40px;
+  }
+
+  .footer .footer-logo img {
+    width: 90px;
+  }
+
+  .footer p {
+    font-size: 12px;
+  }
+
+  .register-form h2 {
+    font-size: 1.3rem;
+  }
+
+  .register-form input,
+  .register-form button {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "sparkfund",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "json-server db.json --middlewares ./node_modules/json-server-auth --port 5000"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "json-server": "^0.17.4",
+    "json-server-auth": "^2.1.0"
+  }
+}

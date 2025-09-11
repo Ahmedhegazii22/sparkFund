@@ -1,0 +1,278 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f9fafb;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 12px 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  flex-wrap: wrap;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffb703;
+}
+.btns {
+  display: flex;
+  justify-content: space-between;
+}
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.btn.login {
+  border: 1px solid #ffb703;
+  color: #ffb703;
+  background: transparent;
+}
+
+.btn.login:hover {
+  background: #ffb703;
+  color: #0a2a43;
+}
+
+.btn.register {
+  background: #ffb703;
+  color: #0a2a43;
+  font-weight: bold;
+}
+
+.btn.register:hover {
+  background: #ffa500;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+
+.search-filter {
+  padding: 30px 40px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  margin-bottom: 20px;
+}
+
+.search-filter input[type="text"] {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-filter input[type="text"]:focus {
+  border-color: #ffb703;
+}
+
+.campaigns-section {
+  padding: 0 40px 30px;
+}
+
+.campaigns-section h1 {
+  font-size: 2rem;
+  color: #0a2a43;
+  margin-bottom: 20px;
+}
+
+.campaigns-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.campaign-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  transition: transform 0.2s ease;
+}
+
+.campaign-card:hover {
+  transform: translateY(-4px);
+}
+
+.campaign-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.campaign-card h3 {
+  font-size: 1.2rem;
+  color: #0a2a43;
+  margin-bottom: 5px;
+}
+
+.campaign-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.campaign-card .progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.campaign-card .progress {
+  height: 100%;
+  background: #ffb703;
+  border-radius: 5px;
+}
+
+.campaign-card .btn {
+  display: inline-block;
+  background: #ffb703;
+  color: #0a2a43;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.campaign-card .btn:hover {
+  background: #ffa500;
+}
+
+.footer {
+  background: #fff;
+  color: #0a2a43;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  margin-top: 20px;
+}
+
+.footer p {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #0a2a43;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    padding: 15px 20px;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .auth-buttons {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .nav-links.active,
+  .auth-buttons.active {
+    display: flex;
+  }
+
+  .btn {
+    margin: 8px 0;
+    padding: 8px 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  .search-filter {
+    padding: 20px;
+  }
+
+  .search-filter input[type="text"] {
+    width: 100%;
+  }
+
+  .campaigns-section {
+    padding: 0 20px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    height: 40px;
+  }
+
+  .campaigns-section h1 {
+    font-size: 1.5rem;
+  }
+
+  .campaign-card img {
+    height: 120px;
+  }
+
+  .campaign-card h3 {
+    font-size: 1rem;
+  }
+
+  .campaign-card p {
+    font-size: 0.8rem;
+  }
+
+  .footer p {
+    font-size: 12px;
+  }
+}

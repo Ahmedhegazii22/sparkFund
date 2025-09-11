@@ -1,0 +1,249 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: hsl(240, 3%, 94%);
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 12px 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  flex-wrap: wrap;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffb703;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.btn.login {
+  border: 1px solid #ffb703;
+  color: #ffb703;
+  background: transparent;
+}
+
+.btn.login:hover {
+  background: #ffb703;
+  color: #0a2a43;
+}
+
+.btn.register {
+  background: #ffb703;
+  color: #0a2a43;
+  font-weight: bold;
+}
+
+.btn.register:hover {
+  background: #ffa500;
+}
+
+.btn.support {
+  background: #ffb703;
+  color: #0a2a43;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+.btn.support:hover {
+  background: #ffa500;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
+}
+
+.campaign-header {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: url("https://via.placeholder.com/1200x300?text=Campaign+Header+Image")
+    no-repeat center/cover;
+  display: flex;
+  align-items: flex-end;
+  padding: 20px;
+  color: white;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+.campaign-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.campaign-header p {
+  font-size: 1.2rem;
+}
+
+.campaign-details {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 30px 40px;
+}
+
+.campaign-details h2 {
+  font-size: 1.8rem;
+  color: #0a2a43;
+  margin-bottom: 20px;
+}
+
+.campaign-overview {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress {
+  height: 100%;
+  background: #ffb703;
+  border-radius: 5px;
+}
+
+.campaign-overview p {
+  margin: 10px 0;
+}
+
+.footer {
+  background: #fff;
+  color: #0a2a43;
+  padding: 40px 20px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  margin-top: 20px;
+}
+
+.footer p {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #0a2a43;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;
+    padding: 15px 20px;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 15px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .auth-buttons {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .nav-links.active,
+  .auth-buttons.active {
+    display: flex;
+  }
+
+  .btn {
+    margin: 8px 0;
+    padding: 8px 20px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hamburger {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  .campaign-header {
+    height: 200px;
+  }
+
+  .campaign-header h1 {
+    font-size: 2rem;
+  }
+
+  .campaign-header p {
+    font-size: 1rem;
+  }
+
+  .campaign-details {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    height: 40px;
+  }
+
+  .campaign-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .campaign-header p {
+    font-size: 0.9rem;
+  }
+
+  .campaign-details h2 {
+    font-size: 1.5rem;
+  }
+
+  .footer p {
+    font-size: 12px;
+  }
+}

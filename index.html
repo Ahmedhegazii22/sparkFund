@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SparkFund</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/home.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">
+        <img src="images/SparkFund Logo Design.png" alt="SparkFund Logo" />
+      </div>
+      <i class="fas fa-bars hamburger" onclick="toggleNav()"></i>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="pages/campaign.html">Browse Campaigns</a>
+      </nav>
+      <div class="auth-buttons">
+        <a href="pages/login.html" class="btn login">Login</a>
+        <a href="pages/register.html" class="btn register">Register</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <h1>Fueling Innovation, One Idea at a Time</h1>
+        <p>
+          SparkFund is where creators and backers come together to bring
+          groundbreaking projects to life. Discover, support, and be a part of
+          the next big thing.
+        </p>
+        <div class="hero-buttons">
+          <button
+            class="btn"
+            onclick="window.location.href='pages/campaign.html'"
+          >
+            Explore Projects
+          </button>
+        </div>
+      </section>
+
+      <!-- Featured Campaigns -->
+      <section class="campaigns">
+        <h2>Featured Campaigns</h2>
+        <div class="campaigns-container">
+          <div class="campaign-card">
+            <img
+              src="images/SparkFund Logo Design.png"
+              alt="Eco-Friendly Urban Gardens"
+            />
+            <h3>Eco-Friendly Urban Gardens</h3>
+            <p>Sustainable living with innovative farming solutions.</p>
+          </div>
+          <div class="campaign-card">
+            <img
+              src="images/SparkFund Logo Design.png"
+              alt="Smart Home Energy Saver"
+            />
+            <h3>Smart Home Energy Saver</h3>
+            <p>Intelligent energy-saving devices for your home.</p>
+          </div>
+          <div class="campaign-card">
+            <img
+              src="images/SparkFund Logo Design.png"
+              alt="Artisan Crafted Coffee Kits"
+            />
+            <h3>Artisan Crafted Coffee Kits</h3>
+            <p>Premium coffee-making kits for coffee lovers.</p>
+          </div>
+          <div class="campaign-card">
+            <img
+              src="images/SparkFund Logo Design.png"
+              alt="Interactive Learning Toys"
+            />
+            <h3>Interactive Learning Toys</h3>
+            <p>Educational and fun toys for kids.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- How It Works -->
+      <section class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+          <div class="step">
+            <img src="images/SparkFund Logo Design.png" alt="Step 1" />
+            <h3>Create Your Project</h3>
+            <p>
+              Share your idea, set your funding goal, and launch your campaign.
+            </p>
+          </div>
+          <div class="step">
+            <img src="images/SparkFund Logo Design.png" alt="Step 2" />
+            <h3>Engage Your Community</h3>
+            <p>Connect with backers, share updates, and build support.</p>
+          </div>
+          <div class="step">
+            <img src="images/SparkFund Logo Design.png" alt="Step 3" />
+            <h3>Bring Your Vision to Life</h3>
+            <p>Receive funding, create your project, and deliver to backers.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-logo">
+        <img src="images/SparkFund Logo Design.png" alt="SparkFund Logo" />
+      </div>
+
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Campaigns</a>
+        <a href="#">Contact</a>
+        <a href="#">FAQ</a>
+      </div>
+
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+
+      <p>© 2025 SparkFund. All rights reserved.</p>
+    </footer>
+    <script type="module" src="js/index.js"></script>
+
+    <script>
+      function toggleNav() {
+        const navLinks = document.querySelector(".nav-links");
+        const authButtons = document.querySelector(".auth-buttons");
+        navLinks.classList.toggle("active");
+        authButtons.classList.toggle("active");
+      }
+    </script>
+  </body>
+</html>

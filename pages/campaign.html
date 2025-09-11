@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SparkFund - Campaigns</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../css/campaign.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">
+        <img src="../images/SparkFund Logo Design.png" alt="SparkFund Logo" />
+      </div>
+      <i class="fas fa-bars hamburger" onclick="toggleNav()"></i>
+      <nav class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="campaign.html">Browse Campaigns</a>
+        <a href="create.html">Start Campaign</a>
+      </nav>
+      <div class="auth-buttons">
+        <a href="login.html" class="btn login">Login</a>
+        <a href="register.html" class="btn register">Register</a>
+      </div>
+    </header>
+
+    <section class="search-filter">
+      <input class="search" type="text" placeholder="Search campaigns..." />
+    </section>
+
+    <section class="campaigns-section">
+      <h1>Browse Campaigns</h1>
+      <div class="campaigns-container"></div>
+    </section>
+
+    <footer class="footer">
+      <p>© 2025 SparkFund. All rights reserved.</p>
+    </footer>
+
+    <script>
+      function toggleNav() {
+        const navLinks = document.querySelector(".nav-links");
+        const authButtons = document.querySelector(".auth-buttons");
+        navLinks.classList.toggle("active");
+        authButtons.classList.toggle("active");
+      }
+    </script>
+    <script type="module" src="../js/campaign.js"></script>
+  </body>
+</html>
+
