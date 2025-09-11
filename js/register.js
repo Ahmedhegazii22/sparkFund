@@ -4,7 +4,8 @@ document
     e.preventDefault();
 
     const name = document.getElementById("userName").value.trim();
-    const email = document.getElementById("userEmail").value.trim();``
+    const email = document.getElementById("userEmail").value.trim();
+    ``;
     const password = document.getElementById("password").value;
     const rePassword = document.getElementById("rePassword").value;
 
@@ -62,9 +63,9 @@ document
           access: 400,
         }),
       });
+      console.log(res);
 
       if (res.ok) {
-        alert("Registered successfully! Please login.");
         window.open("login.html", "_self");
       } else {
         const errorData = await res.json();

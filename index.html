@@ -3,6 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+  default-src 'self'; 
+  style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; 
+  script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; 
+  font-src 'self' https://cdnjs.cloudflare.com;
+  connect-src 'self' http://localhost:5000;
+"
+    />
     <title>SparkFund</title>
     <link
       rel="stylesheet"
@@ -12,22 +22,10 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/global.css">
   </head>
   <body>
-    <header class="navbar">
-      <div class="logo">
-        <img src="images/SparkFund Logo Design.png" alt="SparkFund Logo" />
-      </div>
-      <i class="fas fa-bars hamburger" onclick="toggleNav()"></i>
-      <nav class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="pages/campaign.html">Browse Campaigns</a>
-      </nav>
-      <div class="auth-buttons">
-        <a href="pages/login.html" class="btn login">Login</a>
-        <a href="pages/register.html" class="btn register">Register</a>
-      </div>
-    </header>
+   <nav id="navBar"></nav>
 
     <main>
       <!-- Hero Section -->
@@ -133,6 +131,7 @@
       <p>© 2025 SparkFund. All rights reserved.</p>
     </footer>
     <script type="module" src="js/index.js"></script>
+    <script src="js/navbar.js"></script>
 
     <script>
       function toggleNav() {

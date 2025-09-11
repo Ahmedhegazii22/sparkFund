@@ -62,6 +62,24 @@
       "isActive": true,
       "access": 400,
       "id": 11
+    },
+    {
+      "email": "ahme22d@gmail.com",
+      "password": "$2a$10$kazA1W7.KmaVq/TNWEgGiezLH9ci7aPbrClG/WZdG1qAlVlhyBPCO",
+      "name": "ahmed",
+      "role": "user",
+      "isActive": true,
+      "access": 400,
+      "id": 12
+    },
+    {
+      "email": "ahmxxed@gmail.com",
+      "password": "$2a$10$CFm1ec.fvDG/WZVeNdEpKuHSjWZ3x4GCXPUmmMY/jt/jdeNyY5BnS",
+      "name": "ahmed",
+      "role": "user",
+      "isActive": true,
+      "access": 400,
+      "id": 13
     }
   ],
   "campaigns": [

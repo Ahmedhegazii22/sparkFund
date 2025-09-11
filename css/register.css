@@ -78,7 +78,7 @@ body {
 .error-message {
   color: red;
   font-size: 14px;
-  display: none; /* مخفي في البداية */
+  display: none; 
   margin-top: 5px;
 }
 .register-container {

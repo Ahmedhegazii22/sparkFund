@@ -2,33 +2,65 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const email = document.getElementById("loginEmail").value.trim();
+
   const password = document.getElementById("loginPassword").value;
 
-  if (!email || !password) {
-    alert("Complete All Fields");
-    return;
+  const emailError = document.getElementById("emailError");
+  const passwordError = document.getElementById("passwordError");
+
+  [emailError, passwordError].forEach((el) => (el.style.display = "none"));
+
+  let hasError = false;
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !emailRegex.test(email)) {
+    emailError.textContent = "Please enter a valid email.";
+    emailError.style.display = "block";
+    hasError = true;
   }
 
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&]).{8,}$/;
+  if (!passwordRegex.test(password)) {
+    passwordError.textContent =
+      "Password must be 8+ chars, contain upper, lower, number, and symbol.";
+    passwordError.style.display = "block";
+    hasError = true;
+  }
+
+  if (hasError) return;
+
   try {
-    const res = await fetch("http://localhost:5000/users", {
+    const res = await fetch("http://localhost:5000/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({
+        email,
+        password,
+      }),
     });
 
+    console.log(res);
+
     if (res.ok) {
-      const data = await res.json();
+      // Check if response is successful (status 200-299)
+      const data = await res.json(); // Parse the JSON response
 
-      alert("Login successful!");
-
-      localStorage.setItem("user", JSON.stringify(data));
-
-      window.open("http://127.0.0.1:5500/index.html", "_self");
+      if (data.accessToken) {
+        // Store the token if needed
+        localStorage.setItem("accessToken", data.accessToken);
+        window.open("../index.html", "_self");
+      } else {
+        emailError.textContent = data.message || "Login failed.";
+        emailError.style.display = "block";
+      }
     } else {
+      // Handle HTTP error responses
       const errorData = await res.json();
-      alert("Login failed: " + errorData.message);
+      emailError.textContent = errorData.message || "Login failed.";
+      emailError.style.display = "block";
     }
   } catch (err) {
-    alert("Error: " + err.message);
+    emailError.textContent = "Error: " + err.message;
+    emailError.style.display = "block";
   }
 });

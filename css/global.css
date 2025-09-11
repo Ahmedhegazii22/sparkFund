@@ -1,0 +1,19 @@
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+  margin-left: 10px;
+}
+.Logout {
+  border: 1px solid #e63946; 
+  color: #e63946;
+  background: transparent;
+}
+
+.Logout:hover {
+  background: #e63946;
+  color: #ffffff;
+  box-shadow: 0 4px 8px rgba(230, 57, 70, 0.3);
+}
