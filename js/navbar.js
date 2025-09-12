@@ -9,8 +9,8 @@ navBar.innerHTML = `
     <i class="fas fa-bars hamburger" onclick="toggleNav()"></i>
     <nav class="nav-links">
       <a href="../index.html">Home</a>
-      <a href="campaign.html">Browse Campaigns</a>
-      <a href="create.html">Start Campaign</a>
+      <a href="../pages/campaign.html">Browse Campaigns</a>
+      <a href="../pages/create.html">Start Campaign</a>
     </nav>
     <div class="auth-buttons">
       ${token ? 

@@ -4,51 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SparkFund - Campaign Details</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-  <link rel="stylesheet" href="../css/details.css">
+    <link rel="stylesheet" href="../css/details.css" />
+    <link rel="stylesheet" href="../css/global.css" />
   </head>
   <body>
- <nav id="navBar"></nav>
+    <nav id="navBar"></nav>
 
-    <div class="campaign-header">
-      <h1>Eco-Friendly Urban Gardens</h1>
-      <p>By John Doe</p>
-    </div>
+    <div id="campaign-details"></div>
+    <!-- Pledge Modal -->
+    <div class="modal" id="pledgeModal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Complete Your Support</h2>
+        <form id="pledge-form">
+          <input
+            type="number"
+            name="amount"
+            placeholder="Enter amount"
+            required
+          />
+          <input type="text" name="fullname" placeholder="Full Name" required />
+          <input
+            type="text"
+            name="cardnumber"
+            placeholder="Card Number"
+            maxlength="19"
+            required
+          />
 
-    <section class="campaign-details">
-      <div class="campaign-overview">
-        <h2>Campaign Overview</h2>
-        <p>Help us bring sustainable gardening to urban communities! Our goal is to install eco-friendly garden kits in 10 cities, promoting local food production and reducing carbon footprints.</p>
-        <p><strong>Goal:</strong> $10,000</p>
-        <p><strong>Raised:</strong> $7,500</p>
-        <p><strong>Deadline:</strong> October 10, 2025</p>
-        <div class="progress-bar">
-          <div class="progress" style="width: 75%;"></div>
-        </div>
-        <a href="#" class="btn support">Support This Campaign</a>
+          <div class="input-row">
+            <input
+              type="text"
+              name="expiry"
+              placeholder="MM/YY"
+              maxlength="5"
+              required
+            />
+            <input
+              type="text"
+              name="cvv"
+              placeholder="CVV"
+              maxlength="4"
+              required
+            />
+          </div>
+
+          <button class="btn" type="submit">Support Now</button>
+        </form>
       </div>
-    </section>
+    </div>
 
     <footer class="footer">
       <p>© 2025 SparkFund. All rights reserved.</p>
     </footer>
 
-    <script>
-      function toggleNav() {
-        const navLinks = document.querySelector('.nav-links');
-        const authButtons = document.querySelector('.auth-buttons');
-        navLinks.classList.toggle('active');
-        authButtons.classList.toggle('active');
-      }
-    </script>
-    <script src="../js/campaign.js"></script>
-    <script src="/js/navbar.js"></script>
-
+    <script src="../js/details.js"></script>
+    <script src="../js/navbar.js"></script>
   </body>
 </html>

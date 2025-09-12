@@ -1,9 +1,9 @@
-// ==================== Preview Updates ====================
+const previewCategory = document.getElementById("preview-category");
 const form = document.getElementById("campaign-form");
 const previewImage = document.querySelector(".preview-image");
 const previewTitle = document.getElementById("preview-title");
 const previewDeadline = document.getElementById("preview-deadline");
-
+// ==================== Preview Updates ====================
 form.addEventListener("input", function (e) {
   if (e.target.name === "title") {
     previewTitle.textContent = e.target.value || "Campaign Title";
@@ -12,6 +12,12 @@ form.addEventListener("input", function (e) {
   if (e.target.name === "deadline") {
     previewDeadline.textContent = e.target.value
       ? `Deadline: ${new Date(e.target.value).toLocaleDateString()}`
+      : "";
+  }
+
+  if (e.target.name === "category") {
+    previewCategory.textContent = e.target.value
+      ? `Category: ${e.target.value}`
       : "";
   }
 
@@ -27,8 +33,6 @@ form.addEventListener("input", function (e) {
     }
   }
 });
-
-// ==================== Convert File to Base64 ====================
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -37,7 +41,6 @@ function fileToBase64(file) {
     reader.readAsDataURL(file);
   });
 }
-
 // ==================== Form Submission ====================
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
@@ -46,6 +49,7 @@ form.addEventListener("submit", async function (e) {
   const title = formData.get("title");
   const goal = formData.get("goal");
   const deadline = formData.get("deadline");
+  const category = formData.get("category");
   const imageFile = formData.get("image");
 
   let imageBase64 = null;
@@ -57,7 +61,9 @@ form.addEventListener("submit", async function (e) {
     title,
     goal: Number(goal),
     deadline,
+    category,      // 👈 اضفنا الـ category هنا
     image: imageBase64,
+    isApproved: false,
   };
 
   try {
@@ -76,6 +82,7 @@ form.addEventListener("submit", async function (e) {
     previewImage.style.backgroundImage = "";
     previewTitle.textContent = "";
     previewDeadline.textContent = "";
+    previewCategory.textContent = "";
   } catch (err) {
     console.error(err);
     alert("Error submitting campaign.");

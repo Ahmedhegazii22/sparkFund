@@ -1,3 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: hsl(240, 3%, 94%);
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
 .btn {
   padding: 8px 16px;
   border-radius: 6px;
@@ -16,4 +30,82 @@
   background: #e63946;
   color: #ffffff;
   box-shadow: 0 4px 8px rgba(230, 57, 70, 0.3);
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  padding: 12px 40px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  flex-wrap: wrap;
+}
+
+.logo img {
+  height: 50px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffb703;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.btn.login {
+  border: 1px solid #ffb703;
+  color: #ffb703;
+  background: transparent;
+}
+
+.btn.login:hover {
+  background: #ffb703;
+  color: #0a2a43;
+}
+
+.btn.register {
+  background: #ffb703;
+  color: #0a2a43;
+  font-weight: bold;
+}
+
+.btn.register:hover {
+  background: #ffa500;
+}
+
+.btn.support {
+  background: #ffb703;
+  color: #0a2a43;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+.btn.support:hover {
+  background: #ffa500;
+}
+
+.hamburger {
+  display: none;
+  font-size: 24px;
+  color: #333;
+  cursor: pointer;
 }

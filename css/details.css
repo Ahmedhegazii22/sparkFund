@@ -12,6 +12,7 @@ body {
   line-height: 1.6;
 }
 
+/* ---------------- Navbar ---------------- */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -44,12 +45,15 @@ body {
   color: #ffb703;
 }
 
+/* ---------------- Buttons ---------------- */
 .btn {
-  padding: 8px 16px;
+  padding: 10px 20px;
   border-radius: 6px;
   text-decoration: none;
   font-size: 14px;
   transition: all 0.3s;
+  cursor: pointer;
+  display: inline-block;
 }
 
 .btn.login {
@@ -77,13 +81,14 @@ body {
   background: #ffb703;
   color: #0a2a43;
   font-weight: bold;
-  padding: 10px 20px;
+  border: none;
 }
 
 .btn.support:hover {
   background: #ffa500;
 }
 
+/* ---------------- Hamburger ---------------- */
 .hamburger {
   display: none;
   font-size: 24px;
@@ -91,12 +96,22 @@ body {
   cursor: pointer;
 }
 
+/* ---------------- Campaign Header ---------------- */
 .campaign-header {
   position: relative;
   width: 100%;
   height: 300px;
-  background: url("https://via.placeholder.com/1200x300?text=Campaign+Header+Image")
-    no-repeat center/cover;
+  background: linear-gradient(135deg, #0a2a43 0%, #ffb703 100%);
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 50%
+    );
   display: flex;
   align-items: flex-end;
   padding: 20px;
@@ -113,6 +128,7 @@ body {
   font-size: 1.2rem;
 }
 
+/* ---------------- Campaign Details ---------------- */
 .campaign-details {
   max-width: 800px;
   margin: 0 auto;
@@ -152,6 +168,7 @@ body {
   margin: 10px 0;
 }
 
+/* ---------------- Footer ---------------- */
 .footer {
   background: #fff;
   color: #0a2a43;
@@ -167,6 +184,104 @@ body {
   color: #0a2a43;
 }
 
+/* ---------------- Modal ---------------- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.modal-content {
+  background: #fff;
+  margin: 8% auto;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease;
+}
+
+/* Close button */
+.modal-content .close {
+  float: right;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #555;
+}
+.modal-content .close:hover {
+  color: #000;
+}
+
+/* ---------------- Pledge Form ---------------- */
+#pledge-form input {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 12px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s;
+}
+
+#pledge-form input:focus {
+  border-color: #ffb703;
+  box-shadow: 0 0 6px rgba(255, 183, 3, 0.4);
+  outline: none;
+}
+
+#pledge-form input::placeholder {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+}
+.input-row input {
+  flex: 1;
+}
+
+/* Submit button */
+#pledge-form button.btn {
+  width: 100%;
+  background: #ffb703;
+  color: #0a2a43;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#pledge-form button.btn:hover {
+  background: #ffa500;
+}
+
+/* ---------------- Animations ---------------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------- Responsive ---------------- */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: row;

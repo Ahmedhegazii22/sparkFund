@@ -276,3 +276,57 @@ body {
     font-size: 12px;
   }
 }
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 10px 15px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+}
+
+.filter-bar label {
+  font-weight: bold;
+  color: #0a2a43;
+  font-size: 14px;
+}
+
+.filter-bar select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.filter-bar select:focus {
+  border-color: #ffb703;
+  box-shadow: 0 0 0 2px rgba(255, 183, 3, 0.2);
+  outline: none;
+}
+#search-filter {
+  padding: 20px 40px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.search-filter {
+  width: 70%;
+}
+
+.search-filter input[type="text"] {
+  flex: 1;
+  width: 100%;
+}

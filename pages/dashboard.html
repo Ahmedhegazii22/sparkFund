@@ -1,11 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SparkFund - Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/dashboard.css">
+  
 </head>
 <body>
-    
+  <div class="sidebar" id="sidebar">
+    <div class="logo">
+      <img src="../images/SparkFund Logo Design.png" alt="SparkFund Logo" />
+    </div>
+    <ul>
+      <li><a href="#"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+      <li><a href="#"><i class="fas fa-chart-line"></i><span>Analytics</span></a></li>
+      <li><a href="#"><i class="fas fa-users"></i><span>Users</span></a></li>
+      <li><a href="#"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+    </ul>
+  </div>
+
+  <div class="content" id="content">
+    <div class="header">
+      <i class="fas fa-bars toggle-btn" id="toggleBtn" onclick="toggleSidebar()"></i>
+      <div class="user-info">
+        <span>Admin User</span>
+        <img src="https://via.placeholder.com/40" alt="User Avatar" />
+      </div>
+    </div>
+
+    <div class="main-content">
+      <h2>Dashboard Overview</h2>
+      <div class="card">
+        <h3>Campaign Statistics</h3>
+        <div class="stats">
+          <div class="stat">
+            <h4>Total Campaigns</h4>
+            <p>25</p>
+          </div>
+          <div class="stat">
+            <h4>Active Campaigns</h4>
+            <p>18</p>
+          </div>
+          <div class="stat">
+            <h4>Total Raised</h4>
+            <p>$45,000</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>User Management</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John Doe</td>
+              <td>john@example.com</td>
+              <td>Admin</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td>Jane Smith</td>
+              <td>jane@example.com</td>
+              <td>User</td>
+              <td>Active</td>
+            </tr>
+            <tr>
+              <td>Bob Johnson</td>
+              <td>bob@example.com</td>
+              <td>User</td>
+              <td>Pending</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card">
+        <h3>Recent Activity</h3>
+        <ul>
+          <li>Sep 12, 2025 - New campaign "Eco-Tech" approved.</li>
+          <li>Sep 11, 2025 - User "Alice" funded $100.</li>
+          <li>Sep 10, 2025 - Campaign "Green Homes" reached 50% funding.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 SparkFund. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const content = document.getElementById('content');
+      sidebar.classList.toggle('collapsed');
+      content.classList.toggle('collapsed');
+      if (window.innerWidth <= 480) {
+        sidebar.classList.toggle('active');
+      }
+    }
+  </script>
 </body>
 </html>

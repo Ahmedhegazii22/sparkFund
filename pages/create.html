@@ -12,9 +12,10 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="../css/create.css" />
+    <link rel="stylesheet" href="../css/global.css" />
   </head>
   <body>
- <nav id="navBar"></nav>
+    <nav id="navBar"></nav>
 
     <section class="create-section">
       <h1>Create Your Campaign</h1>
@@ -29,6 +30,7 @@
             required
           />
         </div>
+
         <div class="form-group">
           <label for="campaign-goal">Funding Goal ($)</label>
           <input
@@ -40,10 +42,24 @@
             required
           />
         </div>
+
         <div class="form-group">
           <label for="campaign-deadline">Deadline</label>
           <input type="date" id="campaign-deadline" name="deadline" required />
         </div>
+
+        <!-- ✅ Category input -->
+        <div class="form-group">
+          <label for="campaign-category">Category</label>
+          <select id="campaign-category" name="category" required>
+            <option value="">-- Choose a category --</option>
+            <option value="health">Health</option>
+            <option value="education">Education</option>
+            <option value="technology">Technology</option>
+            <option value="environment">Environment</option>
+          </select>
+        </div>
+
         <div class="form-group">
           <label for="campaign-image">Campaign Image</label>
           <input
@@ -54,19 +70,24 @@
             required
           />
         </div>
+
         <button type="submit" class="btn submit">Submit Campaign</button>
       </form>
+
       <div class="preview-section">
         <h2>Preview</h2>
         <div class="preview-image"></div>
         <p id="preview-title"></p>
         <p id="preview-deadline"></p>
+        <!-- ✅ Preview category -->
+        <p id="preview-category"></p>
       </div>
     </section>
 
     <footer class="footer">
       <p>© 2025 SparkFund. All rights reserved.</p>
     </footer>
+
     <script src="../js/createCampaign.js"></script>
     <script>
       function toggleNav() {
@@ -77,6 +98,5 @@
       }
     </script>
     <script src="/js/navbar.js"></script>
-
   </body>
 </html>
