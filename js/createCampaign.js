@@ -3,6 +3,15 @@ const form = document.getElementById("campaign-form");
 const previewImage = document.querySelector(".preview-image");
 const previewTitle = document.getElementById("preview-title");
 const previewDeadline = document.getElementById("preview-deadline");
+
+const token = localStorage.getItem("accessToken");
+const userId = localStorage.getItem("userId");
+
+// لو المستخدم مش عامل Login → رجعه
+if (!token || !userId) {
+  window.location.href = "../login.html";
+}
+
 // ==================== Preview Updates ====================
 form.addEventListener("input", function (e) {
   if (e.target.name === "title") {
@@ -33,6 +42,7 @@ form.addEventListener("input", function (e) {
     }
   }
 });
+
 function fileToBase64(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -41,6 +51,7 @@ function fileToBase64(file) {
     reader.readAsDataURL(file);
   });
 }
+
 // ==================== Form Submission ====================
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
@@ -61,9 +72,10 @@ form.addEventListener("submit", async function (e) {
     title,
     goal: Number(goal),
     deadline,
-    category,      // 👈 اضفنا الـ category هنا
+    category,
     image: imageBase64,
     isApproved: false,
+    creatorId: userId ,  
   };
 
   try {
@@ -71,6 +83,7 @@ form.addEventListener("submit", async function (e) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(payload),
     });

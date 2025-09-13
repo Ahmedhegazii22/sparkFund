@@ -1,5 +1,6 @@
 const token = localStorage.getItem("accessToken") || null;
-const navBar = document.getElementById('navBar');
+const role = localStorage.getItem("role") || null;
+const navBar = document.getElementById("navBar");
 
 navBar.innerHTML = `
   <header class="navbar">
@@ -11,23 +12,18 @@ navBar.innerHTML = `
       <a href="../index.html">Home</a>
       <a href="../pages/campaign.html">Browse Campaigns</a>
       <a href="../pages/create.html">Start Campaign</a>
+      ${token ? `<a href="../pages/dashboard.html">Dashboard</a>` : ""}
     </nav>
     <div class="auth-buttons">
-      ${token ? 
-        `<div>
-          <a href="#" class="btn Logout" onclick="logout()">
-            Logout
-          </a>
-        </div>` 
-        : 
-        `<div>
-          <a href="../pages/login.html" class="btn login">
-            Login
-          </a>
-          <a href="../pages/register.html   " class="btn register">
-            Register
-          </a>
-        </div>`
+      ${
+        token
+          ? `<div>
+              <a href="#" class="btn Logout" onclick="logout()">Logout</a>
+            </div>`
+          : `<div>
+              <a href="../pages/login.html" class="btn login">Login</a>
+              <a href="../pages/register.html" class="btn register">Register</a>
+            </div>`
       }
     </div>
   </header>
@@ -36,5 +32,6 @@ navBar.innerHTML = `
 // Add logout function
 function logout() {
   localStorage.removeItem("accessToken");
-  window.location.href = "login.html";
+  localStorage.removeItem("userId");
+  window.location.href = "../pages/login.html";
 }
