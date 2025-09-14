@@ -7,9 +7,8 @@ const previewDeadline = document.getElementById("preview-deadline");
 const token = localStorage.getItem("accessToken");
 const userId = localStorage.getItem("userId");
 
-// لو المستخدم مش عامل Login → رجعه
-if (!token || !userId) {
-  window.location.href = "../login.html";
+if (!token ) {
+  window.location.href = "../pages/login.html";
 }
 
 // ==================== Preview Updates ====================

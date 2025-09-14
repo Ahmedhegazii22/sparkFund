@@ -7,27 +7,31 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   const emailError = document.getElementById("emailError");
   const passwordError = document.getElementById("passwordError");
 
-  // إخفاء أي رسائل خطأ قديمة
-  [emailError, passwordError].forEach((el) => (el.style.display = "none"));
+  // reset errors
+  [emailError, passwordError].forEach((el) => {
+    el.style.display = "none";
+    el.textContent = "";
+  });
 
   let hasError = false;
 
-  // التحقق من الإيميل
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email || !emailRegex.test(email)) {
-    emailError.textContent = "Please enter a valid email.";
-    emailError.style.display = "block";
-    hasError = true;
-  }
+  // // email validation
+  // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  // if (!email || !emailRegex.test(email)) {
+  //   emailError.textContent = "Please enter a valid email.";
+  //   emailError.style.display = "block";
+  //   hasError = true;
+  // }
 
-  // التحقق من الباسورد
-  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&]).{8,}$/;
-  if (!passwordRegex.test(password)) {
-    passwordError.textContent =
-      "Password must be 8+ chars, contain upper, lower, number, and symbol.";
-    passwordError.style.display = "block";
-    hasError = true;
-  }
+  // // password validation
+  // const passwordRegex =
+  //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&]).{8,}$/;
+  // if (!passwordRegex.test(password)) {
+  //   passwordError.textContent =
+  //     "Password must be 8+ chars, contain upper, lower, number, and symbol.";
+  //   passwordError.style.display = "block";
+  //   hasError = true;
+  // }
 
   if (hasError) return;
 
@@ -38,24 +42,37 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
       body: JSON.stringify({ email, password }),
     });
 
-    if (res.ok) {
-      const data = await res.json();
-
-      // لازم السيرفر يرجع user object مع الـtoken
-      if (data.accessToken && data.user) {
-        // تخزين الـtoken + userId
-        localStorage.setItem("accessToken", data.accessToken);
-        localStorage.setItem("userId", data.user.id);
-
-        // إعادة التوجيه للصفحة الرئيسية
-        window.open("../index.html", "_self");
-      } else {
-        emailError.textContent = data.message || "Login failed.";
-        emailError.style.display = "block";
-      }
-    } else {
+    if (!res.ok) {
       const errorData = await res.json();
       emailError.textContent = errorData.message || "Login failed.";
+      emailError.style.display = "block";
+      return;
+    }
+
+    const data = await res.json();
+
+    if (data.accessToken && data.user) {
+      // check if banned
+      if (data.user.isActive === false) {
+        emailError.textContent = "Your account has been banned.";
+        emailError.style.display = "block";
+        return;
+      }
+
+      // save to localStorage
+      localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("userId", data.user.id);   
+      localStorage.setItem("role", data.user.role);   
+      localStorage.setItem("user", JSON.stringify(data.user)); 
+
+      // redirect based on role
+      if (data.user.role === "admin") {
+        window.location.href = "../pages/admin.html";
+      } else {
+        window.location.href = "../pages/campaign.html";
+      }
+    } else {
+      emailError.textContent = data.message || "Login failed.";
       emailError.style.display = "block";
     }
   } catch (err) {

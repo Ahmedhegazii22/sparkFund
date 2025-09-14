@@ -98,49 +98,10 @@
   background: #ffa500;
 }
 
-.footer {
-  background: #fff;
-  color: #0a2a43;
-  padding: 40px 20px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
-  margin-top: 20px;
-}
 
-.footer p {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #0a2a43;
-}
 
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: row;
-    padding: 15px 20px;
-    align-items: flex-start;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 15px;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .auth-buttons {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-  }
-
-  .nav-links.active,
-  .auth-buttons.active {
-    display: flex;
-  }
-
+  
   .btn {
     margin: 8px 0;
     padding: 8px 20px;
@@ -148,13 +109,7 @@
     text-align: center;
   }
 
-  .hamburger {
-    display: block;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-  }
-
+  
   .search-filter {
     padding: 20px;
   }
@@ -169,9 +124,7 @@
 }
 
 @media (max-width: 480px) {
-  .logo img {
-    height: 40px;
-  }
+ 
 
   .campaigns-section h1 {
     font-size: 1.5rem;
@@ -189,9 +142,7 @@
     font-size: 0.8rem;
   }
 
-  .footer p {
-    font-size: 12px;
-  }
+  
 }
 .filter-bar {
   display: flex;

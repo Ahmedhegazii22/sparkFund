@@ -1,14 +1,4 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: "Segoe UI", sans-serif;
-  background: #f9fafb;
-  color: #333;
-  font-size: 16px;
-}
+
 .error-message {
   color: red;
   font-size: 14px;
@@ -16,69 +6,7 @@ body {
   margin-top: 5px;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #edededa7;
-  padding: 12px 40px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
-  flex-wrap: wrap;
-}
 
-.logo img {
-  height: 70px;
-  width: auto;
-}
-
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-  transition: 0.3s;
-}
-.nav-links a:hover {
-  color: #ffb703;
-}
-
-.btn {
-  padding: 8px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 14px;
-  transition: 0.3s;
-  margin-left: 10px;
-}
-.btn.login {
-  border: 1px solid #ffb703;
-  color: #ffb703;
-  background: transparent;
-}
-.btn.login:hover {
-  background: #ffb703;
-  color: #0a2a43;
-}
-.btn.register {
-  background: #ffb703;
-  color: #0a2a43;
-  font-weight: bold;
-}
-.btn.register:hover {
-  background: #ffa500;
-}
-
-.hamburger {
-  display: none;
-  font-size: 24px;
-  color: #333;
-  cursor: pointer;
-}
 
 /* Login Form */
 .login-container {
@@ -198,54 +126,13 @@ body {
   font-size: 14px;
   color: #0a2a43;
 }
-
 /* Responsive Design */
 @media (max-width: 768px) {
   body {
     font-size: 14px;
   }
 
-  .navbar {
-    flex-direction: row;
-    padding: 15px 20px;
-    align-items: flex-start;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 15px;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .auth-buttons {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-  }
-
-  .nav-links.active,
-  .auth-buttons.active {
-    display: flex;
-  }
-
-  .btn {
-    margin: 8px 0;
-    padding: 8px 20px;
-    width: 100%;
-    text-align: center;
-  }
-
-  .hamburger {
-    display: block;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-  }
-
+  
   .login-form {
     padding: 20px;
   }
@@ -260,13 +147,7 @@ body {
     height: 40px;
   }
 
-  .footer .footer-logo img {
-    width: 90px;
-  }
-
-  .footer p {
-    font-size: 12px;
-  }
+ 
 
   .login-form h2 {
     font-size: 1.3rem;

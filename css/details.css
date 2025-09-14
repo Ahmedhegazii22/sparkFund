@@ -1,49 +1,4 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
 
-body {
-  font-family: "Segoe UI", sans-serif;
-  background: #efeff0;
-  color: #333;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-/* ---------------- Navbar ---------------- */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #ffffff;
-  padding: 12px 40px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
-  flex-wrap: wrap;
-}
-
-.logo img {
-  height: 50px;
-  width: auto;
-}
-
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-  transition: color 0.3s;
-}
-
-.nav-links a:hover {
-  color: #ffb703;
-}
 
 /* ---------------- Buttons ---------------- */
 .btn {
@@ -197,22 +152,6 @@ body {
   margin: 10px 0;
 }
 
-/* ---------------- Footer ---------------- */
-.footer {
-  background: #fff;
-  color: #0a2a43;
-  padding: 40px 20px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
-  margin-top: 20px;
-}
-
-.footer p {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #0a2a43;
-}
-
 /* ---------------- Modal ---------------- */
 .modal {
   display: none;
@@ -312,47 +251,7 @@ body {
 
 /* ---------------- Responsive ---------------- */
 @media (max-width: 768px) {
-  .navbar {
-    flex-direction: row;
-    padding: 15px 20px;
-    align-items: flex-start;
-  }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    margin-top: 15px;
-    gap: 10px;
-    text-align: center;
-  }
-
-  .auth-buttons {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-  }
-
-  .nav-links.active,
-  .auth-buttons.active {
-    display: flex;
-  }
-
-  .btn {
-    margin: 8px 0;
-    padding: 8px 20px;
-    width: 100%;
-    text-align: center;
-  }
-
-  .hamburger {
-    display: block;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-  }
-
+ 
   .campaign-header {
     height: 200px;
   }
@@ -387,7 +286,5 @@ body {
     font-size: 1.5rem;
   }
 
-  .footer p {
-    font-size: 12px;
-  }
+
 }

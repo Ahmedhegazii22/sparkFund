@@ -1,6 +1,17 @@
-const token = localStorage.getItem("accessToken") || null;
-const role = localStorage.getItem("role") || null;
+const navToken = localStorage.getItem("accessToken") || null;
+const user = localStorage.getItem("user")
+  ? JSON.parse(localStorage.getItem("user"))
+  : null;
 const navBar = document.getElementById("navBar");
+
+// نحدد اللينكات الإضافية
+let extraLinks = "";
+if (navToken) {
+  extraLinks += `<a href="../pages/dashboard.html">Dashboard</a>`;
+  if (user && user.role === "admin") {
+    extraLinks += `<a href="../pages/admin.html">Admin Panel</a>`;
+  }
+}
 
 navBar.innerHTML = `
   <header class="navbar">
@@ -12,11 +23,11 @@ navBar.innerHTML = `
       <a href="../index.html">Home</a>
       <a href="../pages/campaign.html">Browse Campaigns</a>
       <a href="../pages/create.html">Start Campaign</a>
-      ${token ? `<a href="../pages/dashboard.html">Dashboard</a>` : ""}
+      ${extraLinks}
     </nav>
     <div class="auth-buttons">
       ${
-        token
+        navToken
           ? `<div>
               <a href="#" class="btn Logout" onclick="logout()">Logout</a>
             </div>`
@@ -33,5 +44,6 @@ navBar.innerHTML = `
 function logout() {
   localStorage.removeItem("accessToken");
   localStorage.removeItem("userId");
+  localStorage.removeItem("user");
   window.location.href = "../pages/login.html";
 }

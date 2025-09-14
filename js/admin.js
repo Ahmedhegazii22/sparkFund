@@ -1,116 +1,190 @@
-// assumed logged-in admin
-const userList = document.getElementById("userList");
-const campaignList = document.getElementById("campaignList");
-const pledgeList = document.getElementById("pledgeList");
+// admin-dashboard.js (or wherever your admin script is)
+const token = localStorage.getItem("accessToken");
 
-// Tabs
-document.querySelectorAll(".tab-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+const tabButtons = document.querySelectorAll(".tab");
+const tabContent = document.getElementById("tab-content");
 
-    btn.classList.add("active");
-    document.getElementById(btn.dataset.tab).classList.add("active");
+const getUsers = async () => {
+  const res = await fetch("http://localhost:5000/users", {
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  });
+  return await res.json();
+};
+
+const getCampaigns = async () => {
+  const res = await fetch("http://localhost:5000/campaigns", {
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  });
+  return await res.json();
+};
+
+const getPledges = async () => {
+  const res = await fetch("http://localhost:5000/pledges", {
+    headers: token ? { Authorization: `Bearer ${token}` } : {},
+  });
+  return await res.json();
+};
+
+// Render users: نضيف data-active للزر عشان نعرف الحالة الحالية
+const renderUsers = (users) => {
+  let html = `<h2>Users</h2><table>
+    <tr><th>ID</th><th>Name</th><th>Email</th><th>Status</th><th>Actions</th></tr>`;
+  users.forEach((u) => {
+    html += `
+      <tr>
+        <td>${u.id}</td>
+        <td>${u.name}</td>
+        <td>${u.email}</td>
+        <td>${u.isActive ? "Active" : "Banned"}</td>
+        <td>
+          <button class="action ban" data-id="${u.id}" data-active="${u.isActive}">
+            ${u.isActive ? "Ban" : "Unban"}
+          </button>
+        </td>
+      </tr>`;
+  });
+  html += `</table>`;
+  tabContent.innerHTML = html;
+};
+
+const renderCampaigns = (campaigns) => {
+  let html = `<h2>Campaigns</h2><table>
+    <tr><th>ID</th><th>Title</th><th>Goal</th><th>Approved</th><th>Actions</th></tr>`;
+  campaigns.forEach((c) => {
+    html += `
+      <tr>
+        <td>${c.id}</td>
+        <td>${c.title}</td>
+        <td>$${c.goal}</td>
+        <td>${c.isApproved ? "✅" : "❌"}</td>
+        <td>
+          <button class="action approve" data-id="${c.id}">Approve</button>
+          <button class="action reject" data-id="${c.id}">Reject</button>
+          <button class="action delete" data-id="${c.id}">Delete</button>
+        </td>
+      </tr>`;
+  });
+  html += `</table>`;
+  tabContent.innerHTML = html;
+};
+
+const renderPledges = (pledges) => {
+  let html = `<h2>Pledges</h2><table>
+    <tr><th>ID</th><th>Campaign ID</th><th>User</th><th>Amount</th></tr>`;
+  pledges.forEach((p) => {
+    html += `
+      <tr>
+        <td>${p.id}</td>
+        <td>${p.campaignId}</td>
+        <td>${p.fullname || "Anonymous"}</td>
+        <td>$${p.amount}</td>
+      </tr>`;
+  });
+  html += `</table>`;
+  tabContent.innerHTML = html;
+};
+
+// Tab clicks
+tabButtons.forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const tab = btn.dataset.tab;
+
+    if (tab === "users") {
+      const users = await getUsers();
+      renderUsers(users);
+    }
+
+    if (tab === "campaigns") {
+      const campaigns = await getCampaigns();
+      renderCampaigns(campaigns);
+    }
+
+    if (tab === "pledges") {
+      const pledges = await getPledges();
+      renderPledges(pledges);
+    }
   });
 });
 
-// Fetch and display users
-async function fetchUsers() {
-  const res = await fetch("http://localhost:5000/users");
-  const users = await res.json();
-  userList.innerHTML = "";
-  users.forEach(u => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <h3>${u.name}</h3>
-      <p>Email: ${u.email}</p>
-      <p>Status: ${u.isActive ? "Active" : "Banned"}</p>
-      <button class="ban-btn" data-id="${u.id}">${u.isActive ? "Ban" : "Unban"}</button>
-    `;
-    userList.appendChild(card);
-  });
-}
+// Event delegation للأزرار: نستخدم closest() عشان نتأكد ناخد الزر لو المستخدم ضغط على عنصر فرعي
+tabContent.addEventListener("click", async (e) => {
+  // BAN / UNBAN
+  const banBtn = e.target.closest("button.action.ban");
+  if (banBtn) {
+    const id = banBtn.dataset.id;
+    // dataset.active == "true" أو "false"
+    const currentActive = banBtn.dataset.active === "true";
+    const newActive = !currentActive;
 
-// Fetch and display campaigns
-async function fetchCampaigns() {
-  const res = await fetch("http://localhost:5000/campaigns");
-  const campaigns = await res.json();
-  campaignList.innerHTML = "";
-  campaigns.forEach(c => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <img src="${c.image || 'https://via.placeholder.com/300x150'}" alt="${c.title}" />
-      <h3>${c.title}</h3>
-      <p>Goal: $${c.goal} | Raised: $${c.raised || 0}</p>
-      <p>Creator: ${c.creator}</p>
-      <p>Status: ${c.isApproved ? "Approved" : "Pending"}</p>
-      <button class="approve-btn" data-id="${c.id}">Approve</button>
-      <button class="reject-btn" data-id="${c.id}">Reject</button>
-      <button class="delete-btn" data-id="${c.id}">Delete</button>
-    `;
-    campaignList.appendChild(card);
-  });
-}
+    // تعطيل الزر أثناء الطلب (UX)
+    banBtn.disabled = true;
+    banBtn.textContent = newActive ? "Unban..." : "Ban...";
 
-// Fetch and display pledges
-async function fetchPledges() {
-  const res = await fetch("http://localhost:5000/pledges");
-  const pledges = await res.json();
-  pledgeList.innerHTML = "";
-  pledges.forEach(p => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.innerHTML = `
-      <p>User: ${p.fullname}</p>
-      <p>Campaign ID: ${p.campaignId}</p>
-      <p>Amount: $${p.amount}</p>
-    `;
-    pledgeList.appendChild(card);
-  });
-}
+    try {
+      const res = await fetch(`http://localhost:5000/users/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+        },
+        body: JSON.stringify({ isActive: newActive }),
+      });
 
-// Event delegation
-document.addEventListener("click", async e => {
-  const id = e.target.dataset.id;
+      if (!res.ok) {
+        const err = await res.text();
+        throw new Error(err || "Failed to update user");
+      }
 
-  if (e.target.classList.contains("ban-btn")) {
-    const res = await fetch(`http://localhost:5000/users/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ isActive: e.target.textContent === "Unban" })
-    });
-    fetchUsers();
+      // إعادة تحميل قائمة اليوزرز بعد التحديث
+      const users = await getUsers();
+      renderUsers(users);
+    } catch (err) {
+      console.error(err);
+      alert("حدث خطأ أثناء تعديل حالة المستخدم.");
+      // نقدر نعيد الحالة القديمة على الزر لو احتجت
+    } finally {
+      // لو ما عملناش re-render (في حالات فشل) نعيد تفعيل الزر
+      banBtn.disabled = false;
+    }
+    return;
   }
 
-  if (e.target.classList.contains("approve-btn")) {
-    await fetch(`http://localhost:5000/campaigns/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ isApproved: true })
-    });
-    fetchCampaigns();
-  }
+  // APPROVE / REJECT / DELETE لأحد الكامبينز
+  const actionBtn = e.target.closest("button.action.approve, button.action.reject, button.action.delete");
+  if (actionBtn) {
+    const id = actionBtn.dataset.id;
 
-  if (e.target.classList.contains("reject-btn")) {
-    await fetch(`http://localhost:5000/campaigns/${id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ isApproved: false })
-    });
-    fetchCampaigns();
-  }
+    if (actionBtn.classList.contains("approve")) {
+      await fetch(`http://localhost:5000/campaigns/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json", ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+        body: JSON.stringify({ isApproved: true }),
+      });
+      const campaigns = await getCampaigns();
+      renderCampaigns(campaigns);
+      return;
+    }
 
-  if (e.target.classList.contains("delete-btn")) {
-    if (confirm("Delete this campaign?")) {
-      await fetch(`http://localhost:5000/campaigns/${id}`, { method: "DELETE" });
-      fetchCampaigns();
+    if (actionBtn.classList.contains("reject")) {
+      await fetch(`http://localhost:5000/campaigns/${id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json", ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+        body: JSON.stringify({ isApproved: false }),
+      });
+      const campaigns = await getCampaigns();
+      renderCampaigns(campaigns);
+      return;
+    }
+
+    if (actionBtn.classList.contains("delete")) {
+      if (!confirm("Are you sure you want to delete this campaign?")) return;
+      await fetch(`http://localhost:5000/campaigns/${id}`, {
+        method: "DELETE",
+        headers: token ? { Authorization: `Bearer ${token}` } : {},
+      });
+      const campaigns = await getCampaigns();
+      renderCampaigns(campaigns);
+      return;
     }
   }
 });
-
-// Initial load
-fetchUsers();
-fetchCampaigns();
-fetchPledges();

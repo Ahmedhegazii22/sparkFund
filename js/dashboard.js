@@ -32,14 +32,26 @@ async function getUserCampaigns() {
   }
 }
 
-// Fetch pledges by user
+// Fetch pledges for campaigns created by this user
 async function getUserPledges() {
   try {
-    const res = await fetch(`http://localhost:5000/pledges?userId=${userId}`, {
+    // 1. هات الكامبينز بتاعة اليوزر
+    const campaigns = await getUserCampaigns();
+    if (!campaigns || campaigns.length === 0) return [];
+
+    // 2. هات IDs بتاعت الكامبينز
+    const campaignIds = campaigns.map((c) => c.id);
+
+    // 3. هات كل البليدجز
+    const res = await fetch(`http://localhost:5000/pledges`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     if (!res.ok) throw new Error("Failed to fetch pledges");
-    return await res.json();
+
+    const allPledges = await res.json();
+
+    // 4. فلترة pledges اللي تخص الكامبينز بتاعة اليوزر
+    return allPledges.filter((p) => campaignIds.includes(p.campaignId));
   } catch (err) {
     pledgeList.innerHTML = "<p>Error loading pledges.</p>";
     console.error(err);
@@ -63,9 +75,7 @@ async function displayCampaigns() {
     const card = document.createElement("div");
     card.classList.add("campaign-card");
     card.innerHTML = `
-      <img src="${c.image || "https://via.placeholder.com/300x150"}" alt="${
-      c.title
-    }" class="campaign-img"/>
+      <img src="${c.image}" alt="${c.title}" class="campaign-img"/>
       <h3>${c.title}</h3>
       <p>Goal: $${c.goal} | Raised: $${c.raised || 0}</p>
       <p>Deadline: ${
@@ -80,13 +90,13 @@ async function displayCampaigns() {
   });
 }
 
-// Display pledges
+// Display pledges (only for user’s campaigns)
 async function displayPledges() {
   const pledges = await getUserPledges();
   pledgeList.innerHTML = "";
 
   if (!pledges || pledges.length === 0) {
-    pledgeList.innerHTML = "<p>No pledges yet.</p>";
+    pledgeList.innerHTML = "<p>No pledges for your campaigns yet.</p>";
     return;
   }
 
@@ -101,9 +111,10 @@ async function displayPledges() {
     pledgeList.appendChild(div);
   });
 
-  togglePledgesBtn.textContent = `Hide Your Pledges (${pledges.length})`;
+  togglePledgesBtn.textContent = `Hide Pledges (${pledges.length})`;
 }
 
+// Toggle pledges section
 togglePledgesBtn.addEventListener("click", async () => {
   if (userPledgesSection.style.display === "none") {
     await displayPledges();
@@ -179,5 +190,4 @@ editForm.addEventListener("submit", async (e) => {
   displayCampaigns();
 });
 
-// Initial render
 displayCampaigns();
