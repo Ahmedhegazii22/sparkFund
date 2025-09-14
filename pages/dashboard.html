@@ -1,62 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>User Dashboard</title>
-  <link rel="stylesheet" href="../css/dashboard.css" />
-    <link rel="stylesheet" href="../css/global.css"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/global.css" />
+  </head>
+  <body>
+    <nav id="navBar"></nav>
 
-</head>
-<body>
-  <nav id="navBar"></nav>
-
-  <main class="dashboard-container">
-    <header class="dash-header">
-      <h1>Your Campaigns</h1>
-      <div class="dash-actions">
-        <a href="create.html" class="btn primary">+ Add New Campaign</a>
-        <button id="togglePledgesBtn" class="btn secondary">View Your Pledges</button>
-      </div>
-    </header>
-
-    <section id="notice" class="notice"></section>
-
-    <section id="userCampaigns" class="campaigns-grid"></section>
-
-    <!-- User Pledges Section -->
-    <section id="userPledges" class="pledges-grid" style="display:none;">
-      <h2>Your Pledges</h2>
-      <div id="pledgeList"></div>
-    </section>
-  </main>
-
-  <!-- Edit Modal -->
-  <div class="modal" id="editModal">
-    <div class="modal-content">
-      <span class="close" id="closeModalBtn">&times;</span>
-      <h2>Edit Campaign</h2>
-      <form id="editForm">
-        <label for="title">Title</label>
-        <input id="title" name="title" type="text" placeholder="Title" required />
-
-        <label for="goal">Goal Amount</label>
-        <input id="goal" name="goal" type="number" min="0" placeholder="Goal Amount" required />
-
-        <label for="deadline">Deadline</label>
-        <input id="deadline" name="deadline" type="date" placeholder="Deadline" />
-
-        <div class="form-actions">
-          <button type="submit" class="btn edit-btn">Save</button>
-          <button type="button" class="btn cancel-btn" id="cancelModalBtn">Cancel</button>
+    <main class="dashboard-container">
+      <header class="dash-header">
+        <h1>Your Campaigns</h1>
+        <div class="dash-actions">
+          <a href="create.html" class="btn primary">+ Add New Campaign</a>
+          <button id="togglePledgesBtn" class="btn secondary">
+            View Your Pledges
+          </button>
         </div>
-      </form>
-    </div>
-  </div>
-<div id="footer"></div>
-<script src="../js/footer.js"></script>
-<script src="../js/navbar.js"></script>
+      </header>
 
-  <script src="../js/dashboard.js"></script>
-</body>
+      <section id="notice" class="notice"></section>
+
+      <section id="userCampaigns" class="campaigns-grid"></section>
+
+      <!-- User Pledges Section -->
+      <section id="userPledges" class="pledges-grid" style="display: none">
+        <h2>Your Pledges</h2>
+        <div id="pledgeList"></div>
+      </section>
+    </main>
+
+    <!-- Edit Modal -->
+    <div class="modal" id="editModal">
+      <div class="modal-content">
+        <span class="close" id="closeModalBtn">&times;</span>
+        <h2>Edit Campaign</h2>
+        <form id="editForm">
+          <label for="title">Title</label>
+          <input
+            id="title"
+            name="title"
+            type="text"
+            placeholder="Title"
+            required
+          />
+
+          <label for="goal">Goal Amount</label>
+          <input
+            id="goal"
+            name="goal"
+            type="number"
+            min="0"
+            placeholder="Goal Amount"
+            required
+          />
+
+          <label for="deadline">Deadline</label>
+          <input
+            id="deadline"
+            name="deadline"
+            type="date"
+            placeholder="Deadline"
+          />
+
+          <div class="form-actions">
+            <button type="submit" class="btn edit-btn">Save</button>
+            <button type="button" class="btn cancel-btn" id="cancelModalBtn">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div id="footer"></div>
+    <script src="../js/footer.js"></script>
+    <script src="../js/navbar.js"></script>
+
+    <script src="../js/dashboard.js"></script>
+  </body>
 </html>

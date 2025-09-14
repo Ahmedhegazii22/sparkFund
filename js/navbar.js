@@ -55,3 +55,9 @@ function logout() {
   localStorage.removeItem("user");
   window.location.href = "../pages/login.html";
 }
+function toggleNav() {
+  const navLinks = document.querySelector(".nav-links");
+  const authButtons = document.querySelector(".auth-buttons");
+  navLinks.classList.toggle("active");
+  authButtons.classList.toggle("active");
+}
