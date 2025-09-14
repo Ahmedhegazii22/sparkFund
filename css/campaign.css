@@ -1,4 +1,3 @@
-
 .search-filter {
   padding: 30px 40px;
   background: #ffffff;
@@ -29,43 +28,10 @@
   color: #0a2a43;
   margin-bottom: 20px;
 }
-
 .campaigns-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
-}
-
-.campaign-card {
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
-  transition: transform 0.2s ease;
-}
-
-.campaign-card:hover {
-  transform: translateY(-4px);
-}
-
-.campaign-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.campaign-card h3 {
-  font-size: 1.2rem;
-  color: #0a2a43;
-  margin-bottom: 5px;
-}
-
-.campaign-card p {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 10px;
 }
 
 .campaign-card .progress-bar {
@@ -83,25 +49,7 @@
   border-radius: 5px;
 }
 
-.campaign-card .btn {
-  display: inline-block;
-  background: #ffb703;
-  color: #0a2a43;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  margin-top: 10px;
-}
-
-.campaign-card .btn:hover {
-  background: #ffa500;
-}
-
-
-
 @media (max-width: 768px) {
-  
   .btn {
     margin: 8px 0;
     padding: 8px 20px;
@@ -109,7 +57,6 @@
     text-align: center;
   }
 
-  
   .search-filter {
     padding: 20px;
   }
@@ -123,27 +70,6 @@
   }
 }
 
-@media (max-width: 480px) {
- 
-
-  .campaigns-section h1 {
-    font-size: 1.5rem;
-  }
-
-  .campaign-card img {
-    height: 120px;
-  }
-
-  .campaign-card h3 {
-    font-size: 1rem;
-  }
-
-  .campaign-card p {
-    font-size: 0.8rem;
-  }
-
-  
-}
 .filter-bar {
   display: flex;
   align-items: center;

@@ -1,15 +1,32 @@
 const navToken = localStorage.getItem("accessToken") || null;
-const user = localStorage.getItem("user")
+const navUser = localStorage.getItem("user")
   ? JSON.parse(localStorage.getItem("user"))
   : null;
 const navBar = document.getElementById("navBar");
 
-// نحدد اللينكات الإضافية
 let extraLinks = "";
 if (navToken) {
   extraLinks += `<a href="../pages/dashboard.html">Dashboard</a>`;
-  if (user && user.role === "admin") {
+  if (navUser && navUser.role === "admin") {
     extraLinks += `<a href="../pages/admin.html">Admin Panel</a>`;
+  }
+}
+
+const currentPage = window.location.pathname.split("/").pop();
+
+let authButtons = "";
+if (navToken) {
+  authButtons = `<a href="#" class="btn Logout" onclick="logout()">Logout</a>`;
+} else {
+  if (currentPage === "login.html") {
+    authButtons = `<a href="../pages/register.html" class="btn register">Register</a>`;
+  } else if (currentPage === "register.html") {
+    authButtons = `<a href="../pages/login.html" class="btn login">Login</a>`;
+  } else {
+    authButtons = `
+      <a href="../pages/login.html" class="btn login">Login</a>
+      <a href="../pages/register.html" class="btn register">Register</a>
+    `;
   }
 }
 
@@ -26,16 +43,7 @@ navBar.innerHTML = `
       ${extraLinks}
     </nav>
     <div class="auth-buttons">
-      ${
-        navToken
-          ? `<div>
-              <a href="#" class="btn Logout" onclick="logout()">Logout</a>
-            </div>`
-          : `<div>
-              <a href="../pages/login.html" class="btn login">Login</a>
-              <a href="../pages/register.html" class="btn register">Register</a>
-            </div>`
-      }
+      ${authButtons}
     </div>
   </header>
 `;

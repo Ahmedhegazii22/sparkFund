@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
+    <!-- <meta
       http-equiv="Content-Security-Policy"
       content="
   default-src 'self'; 
@@ -13,6 +13,18 @@
   connect-src 'self' http://localhost:5000;
 "
     />
+    <meta
+  http-equiv="Content-Security-Policy"
+  content="
+    default-src 'self';
+    style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+    script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+    font-src 'self' https://cdnjs.cloudflare.com;
+    img-src 'self' data: https:;
+    connect-src 'self' http://localhost:5000;
+  "
+/> -->
+
     <title>SparkFund</title>
     <link
       rel="stylesheet"
@@ -22,13 +34,12 @@
       referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="css/home.css" />
-    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/global.css" />
   </head>
   <body>
-   <nav id="navBar"></nav>
+    <nav id="navBar"></nav>
 
     <main>
-      <!-- Hero Section -->
       <section class="hero">
         <h1>Fueling Innovation, One Idea at a Time</h1>
         <p>
@@ -46,63 +57,35 @@
         </div>
       </section>
 
-      <!-- Featured Campaigns -->
       <section class="campaigns">
         <h2>Featured Campaigns</h2>
-        <div class="campaigns-container">
-          <div class="campaign-card">
-            <img
-              src="images/SparkFund Logo Design.png"
-              alt="Eco-Friendly Urban Gardens"
-            />
-            <h3>Eco-Friendly Urban Gardens</h3>
-            <p>Sustainable living with innovative farming solutions.</p>
-          </div>
-          <div class="campaign-card">
-            <img
-              src="images/SparkFund Logo Design.png"
-              alt="Smart Home Energy Saver"
-            />
-            <h3>Smart Home Energy Saver</h3>
-            <p>Intelligent energy-saving devices for your home.</p>
-          </div>
-          <div class="campaign-card">
-            <img
-              src="images/SparkFund Logo Design.png"
-              alt="Artisan Crafted Coffee Kits"
-            />
-            <h3>Artisan Crafted Coffee Kits</h3>
-            <p>Premium coffee-making kits for coffee lovers.</p>
-          </div>
-          <div class="campaign-card">
-            <img
-              src="images/SparkFund Logo Design.png"
-              alt="Interactive Learning Toys"
-            />
-            <h3>Interactive Learning Toys</h3>
-            <p>Educational and fun toys for kids.</p>
-          </div>
-        </div>
+        <div class="campaigns-container"></div>
       </section>
 
-      <!-- How It Works -->
+
       <section class="how-it-works">
         <h2>How It Works</h2>
         <div class="steps">
           <div class="step">
-            <img src="images/SparkFund Logo Design.png" alt="Step 1" />
+            <img
+              src="images/photo-1521737604893-d14cc237f11d.jpeg"
+              alt="Step 1"
+            />
             <h3>Create Your Project</h3>
             <p>
               Share your idea, set your funding goal, and launch your campaign.
             </p>
           </div>
           <div class="step">
-            <img src="images/SparkFund Logo Design.png" alt="Step 2" />
+            <img
+              src="images/photo-1522202176988-66273c2fd55f.jpeg"
+              alt="Step 2"
+            />
             <h3>Engage Your Community</h3>
             <p>Connect with backers, share updates, and build support.</p>
           </div>
           <div class="step">
-            <img src="images/SparkFund Logo Design.png" alt="Step 3" />
+            <img src="images/photo-1560448204-e02f11c3d0e2.jpeg" alt="Step 3" />
             <h3>Bring Your Vision to Life</h3>
             <p>Receive funding, create your project, and deliver to backers.</p>
           </div>
@@ -110,8 +93,8 @@
       </section>
     </main>
 
-   <div id="footer"></div>
-<script src="../js/footer.js"></script>
+    <div id="footer"></div>
+    <script src="../js/footer.js"></script>
 
     <script type="module" src="js/index.js"></script>
     <script src="js/navbar.js"></script>

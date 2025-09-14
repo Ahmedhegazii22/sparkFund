@@ -1,99 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Segoe UI", sans-serif;
-  background: #f9fafb;
-  color: #333;
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #edededa7;
-  padding: 12px 40px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
-  flex-wrap: wrap;
-}
-
-.navbar .logo img {
-  height: 50px;
-  width: auto;
-}
-
-.navbar .nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.navbar .nav-links a {
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-  transition: color 0.3s;
-}
-
-.navbar .nav-links a:hover {
-  color: #ffb703;
-}
-
-.navbar .btn {
-  padding: 8px 16px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 14px;
-  transition: all 0.3s;
-  margin-left: 10px;
-}
-
-.navbar .btn.login {
-  border: 1px solid #ffb703;
-  color: #ffb703;
-  background: transparent;
-}
-
-.navbar .btn.login:hover {
-  background: #ffb703;
-  color: #0a2a43;
-}
-
-.navbar .btn.register {
-  background: #ffb703;
-  color: #0a2a43;
-  font-weight: bold;
-}
-
-.navbar .btn.register:hover {
-  background: #ffa500;
-}
-
-.navbar .btn.hero {
-  padding: 12px 24px;
-  background: #ffb703;
-  color: #0a2a43;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-}
-
-.navbar .btn.hero:hover {
-  background: #ffa500;
-}
-
-.navbar .hamburger {
-  display: none;
-  font-size: 24px;
-  color: #333;
-  cursor: pointer;
-}
-
 .hero {
   background: linear-gradient(135deg, #0a2a43, #ffb703);
   color: white;
@@ -123,70 +27,19 @@ body {
   margin-right: auto;
 }
 
-
-
 .hero .hero-buttons .btn {
   margin: 0 10px;
   padding: 10px 30px;
   border: none;
   border-radius: 6px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   font-size: 20px;
 }
-.hero .hero-buttons .btn:hover{
+.hero .hero-buttons .btn:hover {
   background-color: #ffa500;
-  color: #fff
+  color: #fff;
 }
 
-.campaigns {
-  padding: 40px 20px;
-  text-align: center;
-}
-
-.campaigns h2 {
-  font-size: 2rem;
-  color: #0a2a43;
-  margin-bottom: 30px;
-}
-
-.campaigns .campaigns-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.campaigns .campaign-card {
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.campaigns .campaign-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.campaigns .campaign-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 6px;
-}
-
-.campaigns .campaign-card h3 {
-  font-size: 1.2rem;
-  color: #0a2a43;
-  margin: 10px 0;
-}
-
-.campaigns .campaign-card p {
-  font-size: 0.9rem;
-  color: #666;
-}
 
 .how-it-works {
   background: #ffffff;
@@ -214,9 +67,9 @@ body {
 }
 
 .how-it-works .step img {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 15px;
+ width: 100%;
+  margin-bottom: 15px; 
+  border-radius: 10px;
 }
 
 .how-it-works .step h3 {
@@ -230,13 +83,10 @@ body {
   color: #666;
 }
 
-
-
 @media (max-width: 768px) {
   body {
     font-size: 14px;
   }
-
 
   .hero h1 {
     font-size: 2rem;
@@ -256,7 +106,6 @@ body {
 }
 
 @media (max-width: 480px) {
- 
   .hero h1 {
     font-size: 1.5rem;
   }
@@ -278,6 +127,4 @@ body {
   .how-it-works h2 {
     font-size: 1.3rem;
   }
-
- 
 }

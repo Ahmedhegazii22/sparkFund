@@ -25,7 +25,6 @@ const getPledges = async () => {
   return await res.json();
 };
 
-// Render users: نضيف data-active للزر عشان نعرف الحالة الحالية
 const renderUsers = (users) => {
   let html = `<h2>Users</h2><table>
     <tr><th>ID</th><th>Name</th><th>Email</th><th>Status</th><th>Actions</th></tr>`;
@@ -106,17 +105,15 @@ tabButtons.forEach((btn) => {
   });
 });
 
-// Event delegation للأزرار: نستخدم closest() عشان نتأكد ناخد الزر لو المستخدم ضغط على عنصر فرعي
 tabContent.addEventListener("click", async (e) => {
   // BAN / UNBAN
   const banBtn = e.target.closest("button.action.ban");
   if (banBtn) {
     const id = banBtn.dataset.id;
-    // dataset.active == "true" أو "false"
+    // dataset.active == "true" or "false"
     const currentActive = banBtn.dataset.active === "true";
     const newActive = !currentActive;
 
-    // تعطيل الزر أثناء الطلب (UX)
     banBtn.disabled = true;
     banBtn.textContent = newActive ? "Unban..." : "Ban...";
 
@@ -135,21 +132,18 @@ tabContent.addEventListener("click", async (e) => {
         throw new Error(err || "Failed to update user");
       }
 
-      // إعادة تحميل قائمة اليوزرز بعد التحديث
       const users = await getUsers();
       renderUsers(users);
     } catch (err) {
       console.error(err);
-      alert("حدث خطأ أثناء تعديل حالة المستخدم.");
-      // نقدر نعيد الحالة القديمة على الزر لو احتجت
+      alert("Error");
     } finally {
-      // لو ما عملناش re-render (في حالات فشل) نعيد تفعيل الزر
       banBtn.disabled = false;
     }
     return;
   }
 
-  // APPROVE / REJECT / DELETE لأحد الكامبينز
+  // APPROVE / REJECT / DELETE ل
   const actionBtn = e.target.closest("button.action.approve, button.action.reject, button.action.delete");
   if (actionBtn) {
     const id = actionBtn.dataset.id;

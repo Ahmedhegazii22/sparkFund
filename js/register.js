@@ -5,7 +5,7 @@ document
 
     const name = document.getElementById("userName").value.trim();
     const email = document.getElementById("userEmail").value.trim();
-    ``;
+
     const password = document.getElementById("password").value;
     const rePassword = document.getElementById("rePassword").value;
 

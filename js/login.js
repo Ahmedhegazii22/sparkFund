@@ -15,24 +15,6 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
   let hasError = false;
 
-  // // email validation
-  // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  // if (!email || !emailRegex.test(email)) {
-  //   emailError.textContent = "Please enter a valid email.";
-  //   emailError.style.display = "block";
-  //   hasError = true;
-  // }
-
-  // // password validation
-  // const passwordRegex =
-  //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?#&]).{8,}$/;
-  // if (!passwordRegex.test(password)) {
-  //   passwordError.textContent =
-  //     "Password must be 8+ chars, contain upper, lower, number, and symbol.";
-  //   passwordError.style.display = "block";
-  //   hasError = true;
-  // }
-
   if (hasError) return;
 
   try {
@@ -61,9 +43,9 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
 
       // save to localStorage
       localStorage.setItem("accessToken", data.accessToken);
-      localStorage.setItem("userId", data.user.id);   
-      localStorage.setItem("role", data.user.role);   
-      localStorage.setItem("user", JSON.stringify(data.user)); 
+      localStorage.setItem("userId", data.user.id);
+      localStorage.setItem("role", data.user.role);
+      localStorage.setItem("user", JSON.stringify(data.user));
 
       // redirect based on role
       if (data.user.role === "admin") {

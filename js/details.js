@@ -7,6 +7,9 @@ const pledgeModal = document.getElementById("pledgeModal");
 const closeBtn = document.querySelector(".modal-content .close");
 const pledgeForm = document.getElementById("pledge-form");
 
+const token = localStorage.getItem("accessToken");
+const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
+
 // fetch campaign by id
 async function getCampaignById(id) {
   const res = await fetch(`http://localhost:5000/campaigns/${id}`);
@@ -29,18 +32,13 @@ async function displayCampaign() {
   const campaign = await getCampaignById(campaignId);
   const pledges = await getPledgesByCampaign(campaignId);
 
-  // حساب المبلغ المجمع فقط من pledges
   const totalRaised = pledges.reduce((sum, p) => sum + Number(p.amount || 0), 0);
   const goal = Number(campaign.goal) || 0;
   const percent = goal > 0 ? Math.min((totalRaised / goal) * 100, 100) : 0;
 
   const html = `
     <div class="campaign-header">
-      <img 
-        src="${campaign.image }" 
-        alt="${campaign.title}" 
-        class="campaign-img"
-      />
+      <img src="${campaign.image}" alt="${campaign.title}" class="campaign-img"/>
       <div class="campaign-header-text">
         <h1>${campaign.title}</h1>
         <p>Deadline: ${campaign.deadline ? new Date(campaign.deadline).toLocaleDateString() : "N/A"}</p>
@@ -63,13 +61,22 @@ async function displayCampaign() {
   `;
   detailsContainer.innerHTML = html;
 
-  // open modal
   document.getElementById("supportBtn").addEventListener("click", () => {
+    if (!token || !user) {
+      alert("You need to login to support a campaign.");
+      window.location.href = "../pages/login.html";
+      return;
+    }
+
+    if (campaign.creatorId == user.id) {
+      alert("You cannot support your own campaign.");
+      return;
+    }
+
     pledgeModal.style.display = "block";
   });
 }
 
-// close modal
 closeBtn.addEventListener("click", () => {
   pledgeModal.style.display = "none";
 });
@@ -80,7 +87,6 @@ window.addEventListener("click", (e) => {
   }
 });
 
-// handle form submit
 pledgeForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = new FormData(pledgeForm);
@@ -93,10 +99,10 @@ pledgeForm.addEventListener("submit", async (e) => {
     expiry: formData.get("expiry"),
     cvv: formData.get("cvv"),
     campaignId: campaignId,
+    userId: user.id
   };
 
   try {
-    // send pledge to server
     await fetch("http://localhost:5000/pledges", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -104,12 +110,8 @@ pledgeForm.addEventListener("submit", async (e) => {
     });
 
     alert("Thank you for supporting this campaign!");
-
-    // close modal and reset form
     pledgeModal.style.display = "none";
     pledgeForm.reset();
-
-    // re-render campaign details
     displayCampaign();
   } catch (err) {
     console.error("Error submitting pledge:", err);

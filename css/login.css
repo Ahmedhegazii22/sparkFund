@@ -1,12 +1,9 @@
-
 .error-message {
   color: red;
   font-size: 14px;
-  display: none; 
+  display: none;
   margin-top: 5px;
 }
-
-
 
 /* Login Form */
 .login-container {
@@ -80,59 +77,12 @@
   color: #0a2a43;
 }
 
-/* Footer */
-.footer {
-  background: #edededa7;
-  color: #0a2a43;
-  padding: 40px 20px;
-  text-align: center;
-  margin-top: 40px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
-}
-
-.footer .footer-logo img {
-  width: 120px;
-}
-
-.footer .footer-links {
-  margin: 15px 0;
-}
-.footer .footer-links a {
-  color: #0a2a43;
-  text-decoration: none;
-  margin: 0 10px;
-  font-size: 14px;
-  transition: 0.3s;
-}
-.footer .footer-links a:hover {
-  color: #ffb703;
-}
-
-.footer .social-icons {
-  margin: 15px 0;
-}
-.footer .social-icons a {
-  margin: 0 8px;
-  font-size: 18px;
-  color: #ffb703;
-  transition: 0.3s;
-}
-.footer .social-icons a:hover {
-  color: #0a2a43;
-}
-
-.footer p {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #0a2a43;
-}
 /* Responsive Design */
 @media (max-width: 768px) {
   body {
     font-size: 14px;
   }
 
-  
   .login-form {
     padding: 20px;
   }
@@ -143,12 +93,6 @@
 }
 
 @media (max-width: 480px) {
-  .logo img {
-    height: 40px;
-  }
-
- 
-
   .login-form h2 {
     font-size: 1.3rem;
   }

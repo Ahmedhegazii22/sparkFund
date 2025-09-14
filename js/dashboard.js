@@ -14,7 +14,6 @@ const pledgeList = document.getElementById("pledgeList");
 
 let editingCampaignId = null;
 
-// Fetch campaigns by user
 async function getUserCampaigns() {
   try {
     const res = await fetch(
@@ -32,17 +31,13 @@ async function getUserCampaigns() {
   }
 }
 
-// Fetch pledges for campaigns created by this user
 async function getUserPledges() {
   try {
-    // 1. هات الكامبينز بتاعة اليوزر
     const campaigns = await getUserCampaigns();
     if (!campaigns || campaigns.length === 0) return [];
 
-    // 2. هات IDs بتاعت الكامبينز
     const campaignIds = campaigns.map((c) => c.id);
 
-    // 3. هات كل البليدجز
     const res = await fetch(`http://localhost:5000/pledges`, {
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -50,7 +45,6 @@ async function getUserPledges() {
 
     const allPledges = await res.json();
 
-    // 4. فلترة pledges اللي تخص الكامبينز بتاعة اليوزر
     return allPledges.filter((p) => campaignIds.includes(p.campaignId));
   } catch (err) {
     pledgeList.innerHTML = "<p>Error loading pledges.</p>";
@@ -59,7 +53,6 @@ async function getUserPledges() {
   }
 }
 
-// Display campaigns
 async function displayCampaigns() {
   const campaigns = await getUserCampaigns();
   userCampaignsContainer.innerHTML = "";
@@ -72,6 +65,7 @@ async function displayCampaigns() {
   }
 
   campaigns.forEach((c) => {
+    const status = c.isApproved ? "Approved" : "Pending";
     const card = document.createElement("div");
     card.classList.add("campaign-card");
     card.innerHTML = `
@@ -81,6 +75,7 @@ async function displayCampaigns() {
       <p>Deadline: ${
         c.deadline ? new Date(c.deadline).toLocaleDateString() : "N/A"
       }</p>
+      <p>Status: <strong>${status}</strong></p>
       <div>
         <button class="edit-btn" data-id="${c.id}">Edit</button>
         <button class="delete-btn" data-id="${c.id}">Delete</button>
@@ -90,7 +85,6 @@ async function displayCampaigns() {
   });
 }
 
-// Display pledges (only for user’s campaigns)
 async function displayPledges() {
   const pledges = await getUserPledges();
   pledgeList.innerHTML = "";
@@ -114,7 +108,6 @@ async function displayPledges() {
   togglePledgesBtn.textContent = `Hide Pledges (${pledges.length})`;
 }
 
-// Toggle pledges section
 togglePledgesBtn.addEventListener("click", async () => {
   if (userPledgesSection.style.display === "none") {
     await displayPledges();
@@ -125,7 +118,6 @@ togglePledgesBtn.addEventListener("click", async () => {
   }
 });
 
-// Edit / Delete logic
 userCampaignsContainer.addEventListener("click", async (e) => {
   const id = e.target.getAttribute("data-id");
 
@@ -156,7 +148,6 @@ userCampaignsContainer.addEventListener("click", async (e) => {
   }
 });
 
-// Modal handlers
 function closeModal() {
   editModal.style.display = "none";
 }
@@ -166,7 +157,6 @@ window.addEventListener("click", (e) => {
   if (e.target === editModal) closeModal();
 });
 
-// Submit edit form
 editForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!editingCampaignId) return;

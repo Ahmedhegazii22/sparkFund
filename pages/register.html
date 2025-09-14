@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="../css/global.css" />
   </head>
   <body>
+    <nav id="navBar"></nav>
+
     <main>
       <div class="register-container">
         <!-- form -->
@@ -51,7 +53,16 @@
 
     <div id="footer"></div>
     <script src="../js/footer.js"></script>
+    <script src="../js/navbar.js"></script>
 
     <script src="../js/register.js"></script>
+    <script>
+      function toggleNav() {
+        const navLinks = document.querySelector(".nav-links");
+        const authButtons = document.querySelector(".auth-buttons");
+        navLinks.classList.toggle("active");
+        authButtons.classList.toggle("active");
+      }
+    </script>
   </body>
 </html>
