@@ -62,7 +62,7 @@
   height: 150px;
   background: #e0e0e0;
   border-radius: 6px;
-  margin-bottom: 10px;
+  margin-bottom: 10px; margin: auto;
 }
 
 #preview-title {

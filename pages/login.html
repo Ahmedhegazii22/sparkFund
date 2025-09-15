@@ -33,6 +33,25 @@
           <div class="error-message" id="passwordError"></div>
 
           <button type="submit">Login</button>
+          <!-- <div
+            id="g_id_onload"
+            data-client_id="967309428786-6oavat0tutplerp7rjuasvp27j7ord4h.apps.googleusercontent.com"
+            data-context="signin"
+            data-ux_mode="popup"
+            data-callback="loginCallback"
+            data-auto_prompt="false"
+          ></div>
+
+          <div
+            class="g_id_signin"
+            data-type="standard"
+            data-shape="rectangular"
+            data-theme="outline"
+            data-text="signin_with"
+            data-size="large"
+            data-logo_alignment="left"
+          ></div> -->
+
           <p>
             Don't have an account? <a href="register.html">Register here</a>
           </p>
@@ -45,6 +64,12 @@
     <script src="../js/navbar.js"></script>
 
     <script src="../js/login.js"></script>
-    
+    <!-- <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/jwt-decode/build/jwt-decode.min.js"></script>
+    <script>
+      function loginCallback(res) {
+        console.log(jwt_decode(res.credential));
+      }
+    </script> -->
   </body>
 </html>
